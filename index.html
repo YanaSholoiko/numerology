@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таро Нумерологія</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+	    <div id="languageSelector">
+        <label for="language" data-i18n="language">Змінити мову:</label>
+        <select id="language">
+            <option value="uk">Українська</option>
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+	<div id="intro">
+	    <h2 id="title" data-i18n="title">Нумерологія Таро</h2>
+		<p id="description" data-i18n="description">Введіть свою дату народження:</p>
+        <input type="text" id="birthdate" placeholder="дд.мм.рррр">
+        <button onclick="calculateAll()" id="calculateButton" data-i18n="calculateButton">Розрахувати</button>
+    <p id="errorMessage" style="color: red; display: none;">Введіть коректну дату у форматі дд.мм.рррр</p>
+</div>
+
+        <!-- Tabs -->
+       <div class="tabs">
+    <button id="tab1" data-i18n="tab1">6 золотих позицій</button>
+    <button id="tab2" data-i18n="tab2">Стратегія Успіху та Неуспіху</button>
+    <button id="tab3" data-i18n="tab3">Лабіринти в даті народження</button>
+    <button id="tab4" data-i18n="tab4">Кармічний портрет</button>
+</div>
+
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="tab1" style="display: none;">
+            <h2 data-i18n="tab1Title">6 золотих позицій дати народження</h2>
+            <div class="triangle-layout">
+                <!-- Row 1 -->
+                <div class="triangle-row">
+                   <div class="position-circle" id="position1">
+				      <div class="position-value">1</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position1Label">Ресурс</div> <!-- Назва позиції -->
+                   </div>
+                   <div class="position-circle" id="position2">
+                      <div class="position-value">2</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position2Label">Урок</div> <!-- Назва позиції -->
+                   </div>
+                   <div class="position-circle" id="position3">
+                      <div class="position-value">3</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position3Label">Результат</div> <!-- Назва позиції -->
+                   </div>
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="triangle-row">
+                   <div class="position-circle red" id="position4">
+                     <div class="position-value">4</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position4Label">точка Болі</div> <!-- Назва позиції -->
+                   </div>
+                   <div class="position-circle blue" id="position5">
+                      <div class="position-value">5</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position5Label">точка Сили</div> <!-- Назва позиції -->
+                   </div>
+                </div>
+
+
+                <!-- Row 3 -->
+                <div class="triangle-row">
+                   <div class="position-circle" id="position6">
+                      <div class="position-value">6</div> <!-- Результат розрахунку -->
+                      <div class="position-label" data-i18n="position6Label">Пастка/т.Росту</div> <!-- Назва позиції -->
+                   </div>
+                </div>
+
+            </div>
+			
+			<h2 class="additional-title" data-i18n="additionalTitle">З додатковими позиціями дати народження</h2>
+            <div class="triangle-layout additional-triangle">
+                <!-- Row 1 -->
+                <div class="triangle-row">
+                   <div class="position-circle additional-pos1" id="extra_position1">
+				      <div class="position-value">1</div>
+                      <div class="position-label" data-i18n="extraPosition1Label">Ресурс</div>
+                   </div>
+                   <div class="position-circle additional-pos2" id="extra_position2">
+                      <div class="position-value">2</div>
+					  <div class="position-label" data-i18n="extraPosition2Label">Урок</div>
+                   </div>
+                   <div class="position-circle additional-pos3" id="extra_position3">
+                      <div class="position-value">3</div>
+					  <div class="position-label" data-i18n="extraPosition3Label">Результат</div>
+                   </div>
+                   <div class="position-circle additional-pos10" id="extra_position10">
+                      <div class="position-value">10</div>
+					  <div class="position-label" data-i18n="extraPosition10Label">Сфера реалізації</div>
+                   </div>
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="triangle-row">
+                  <div class="position-circle additional-pos7" id="extra_position7">
+					 <div class="position-value">7</div>
+					 <div class="position-label label-pos7" data-i18n="extraPosition7Label">Внутрішня дитина</div>
+                  </div>
+                  <div class="position-circle additional-pos8" id="extra_position8">
+                    <div class="position-value">8</div>
+					<div class="position-label label-pos8" data-i18n="extraPosition8Label">Потреба душі</div>
+                  </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="triangle-row">
+                   <div class="position-circle red additional-pos4" id="extra_position4">
+					 <div class="position-value">4</div>
+					 <div class="position-label" data-i18n="extraPosition4Label">Точка Болі</div>
+                   </div>
+                   <div class="position-circle blue additional-pos5" id="extra_position5">
+                      <div class="position-value">5</div>
+					  <div class="position-label" data-i18n="extraPosition5Label">Точка Сили</div>
+                   </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="triangle-row">
+                  <div class="position-circle additional-pos11" id="extra_position11">
+                     <div class="position-value">11</div>
+					 <div class="position-label" data-i18n="extraPosition11Label">Темний Ангел</div>
+                  </div>
+                  <div class="position-circle additional-pos9" id="extra_position9">
+                     <div class="position-value">9</div>
+					 <div class="position-label label-pos9" data-i18n="extraPosition9Label">Унікальні якості</div>
+                  </div>
+                  <div class="position-circle additional-pos12" id="extra_position12">
+                     <div class="position-value">12</div>
+					 <div class="position-label" data-i18n="extraPosition12Label">Світлий Ангел</div>
+                  </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="triangle-row">
+                   <div class="position-circle additional-pos6" id="extra_position6">
+                      <div class="position-value">6</div>
+					  <div class="position-label"data-i18n="extraPosition6Label">Паска / т.Росту</div>
+                   </div>
+                </div>
+            </div>
+<h2 class="karmic-title" data-i18n="karmicTitle">Кармічні граблі</h2>
+<div class="karmic-layout">
+    <!-- Кармічні граблі -->
+    <div class="karmic-result">
+        <div class="position-circle">
+            <div class="position-value" id="final-karmic">КГ</div>
+        </div>
+        <div data-i18n="karmicResultLabel">Кармічні граблі</div>
+    </div>
+
+    <!-- Знак "равно" -->
+    <div class="equal-sign" data-i18n="equalSign">=</div>
+
+    <!-- Перший трикутник -->
+    <div class="triangle-group">
+        <div class="triangle-row">
+            <div id="karmic-position1" class="position-circle">
+                <div class="position-value">1</div>
+            </div>
+            <div id="karmic-position4" class="position-circle">
+                <div class="position-value">4</div>
+            </div>
+        </div>
+        <div class="result-circle position-circle">
+            <div class="position-value" id="result1">р. 1</div>
+            <div class="result-label" data-i18n="resultLabel1">Я справжній/я</div>
+        </div>
+    </div>
+
+    <!-- Знак "плюс" -->
+    <div class="plus-sign" data-i18n="plusSign">+</div>
+
+    <!-- Другий трикутник -->
+    <div class="triangle-group">
+        <div class="triangle-row">
+            <div id="karmic-position5" class="position-circle">
+                <div class="position-value">5</div>
+            </div>
+            <div id="karmic-position3" class="position-circle">
+                <div class="position-value">3</div>
+            </div>
+        </div>
+        <div class="result-circle position-circle">
+            <div class="position-value" id="result2">р. 2</div>
+            <div class="result-label" data-i18n="resultLabel2">Я хороший/а</div>
+        </div>
+    </div>
+</div>
+
+        </div>
+		
+		
+<div class="tab-content" id="tab2" style="display: none;">
+    <h2 data-i18n="strategyTitle">Стратегія Успіху/Неуспіху</h2>
+    <div id="strategy-success" class="strategy-layout">
+        <!-- Рядок 1 -->
+        <div class="strategy-row">
+            <div id="second-position13" class="circle second-position13">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="successLabel">Успіх</div>
+            </div>
+        </div>
+
+        <!-- Рядок 2 -->
+        <div class="strategy-row">
+            <div id="second-position1" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="resourceLabel">Ресурс</div>
+            </div>
+            <div id="second-position4" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="decisionTerritoryLabel">Територія Прийняття Рішення</div>
+            </div>
+            <div id="second-position2" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="lessonLabel">Урок</div>
+            </div>
+        </div>
+
+        <!-- Рядок 3 -->
+        <div class="strategy-row">
+            <div id="second-position7" class="circle second-position7">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="failureLabel">Неуспіх</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="tab-content" id="tab3" style="display: none;">
+    <h2 data-i18n="labyrinthTitle">Лабіринти в даті народження</h2>
+    <div id="labyrinth-layout" class="labyrinth-layout">
+        <!-- Рядок 1 -->
+        <div class="labyrinth-row">
+            <div id="third-position13" class="circle labyrinth-position13">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="successLabel">Успіх</div>
+            </div>
+            <div id="third-position14" class="circle labyrinth-position14">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="realizationLabel">Реалізація</div>
+            </div>
+        </div>
+
+        <!-- Рядок 2 -->
+        <div class="labyrinth-row">
+            <div id="third-position1" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="resourceLabel">Ресурс</div>
+            </div>
+            <div id="third-position4" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="decisionTerritoryLabel">Територія Прийняття Рішення</div>
+            </div>
+            <div id="third-position2" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="lessonLabel">Урок</div>
+            </div>
+            <div id="third-position5" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="psychologicalGrowthLabel">Психолог. Дорослішання</div>
+            </div>
+            <div id="third-position3" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="resultLabel">Результат</div>
+            </div>
+        </div>
+
+        <!-- Рядок 3 -->
+        <div class="labyrinth-row">
+            <div id="third-position7" class="circle labyrinth-position7">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="failureLabel">Неуспіх</div>
+            </div>
+            <div id="third-position8" class="circle labyrinth-position8">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="trueGoalLabel">Істина ціль</div>
+            </div>
+        </div>
+
+        <!-- Додаткові Рядки -->
+        <!-- Точка Страху -->
+<div class="layout">
+    <!-- Ліва частина -->
+    <div class="left-section">
+	<h2 data-i18n="fearPointTitle">Точка Страху</h2>
+        <div id="fear-position7" class="circle">
+            <div class="position-value"></div>
+            <div class="position-label" data-i18n="failureLabel">Неуспіх</div>
+        </div>
+		<div id="third-position17" class="circle middle-position">
+            <div class="position-value"></div>
+            <div class="position-label" data-i18n="fearPointLabel">Точка Страху</div>
+        </div>
+        <div class="row">
+            <div id="fear-position4" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="painPointLabel">Точка Болі</div>
+            </div>
+            <div id="third-position6" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="trapLabel">Пастка</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Права частина -->
+    <div class="right-section">
+	<h2 data-i18n="soulSecretsTitle">Таємниці Душі</h2>
+        <div class="row">
+            <div id="soul-position4" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="painPointLabel">Точка Болі</div>
+            </div>
+            <div id="soul-position5" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="strengthPointLabel">Психолог. Дорослішання</div>
+            </div>
+        </div>
+        <div id="third-position18" class="circle middle-position">
+            <div class="position-value"></div>
+            <div class="position-label" data-i18n="shadowLabel">Тінь</div>
+        </div>
+        <div class="row">
+            <div id="soul-position13" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="fearTraumaLabel">Страх/Травма</div>
+            </div>
+            <div id="soul-position8" class="circle">
+                <div class="position-value"></div>
+                <div class="position-label" data-i18n="trueGoalLabel">Істина Ціль</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pain-strength-section">
+    <h2 data-i18n="painStrengthTitle">Біль та Сила</h2>
+    <div class="row">
+        <div class="circle-container">
+            <div class="circle" id="pain-position15">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="pastLivesLabel">Ким був(була)</span>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="pain-position5">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label"data-i18n="strengthPointLabel">Точка Сили</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="circle-container">
+            <div class="circle" id="pain-position1">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="resourceLabel">Ресурс</span>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="pain-position2">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="lessonLabel">Урок</span>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="pain-position3">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="resultLabel">Результат</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="circle-container">
+            <div class="circle" id="pain-position4">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="painPointLabel">Точка Болю</span>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="pain-position16">
+                <span class="position-value"></span>
+            </div>
+            <span class="circle-label" data-i18n="pastMistakeLabel">Помилка минулих втілень</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+</div>
+
+<div class="tab-content" id="tab4-content">
+<h2 data-i18n="karmicPortraitTitle">Кармічний портрет</h2>
+  <!-- Перший рядок -->
+  <div class="row row-first">
+    <div class="position blue">Позиція 10</div>
+    <div class="position blue">Позиція 13</div>
+    <div class="position blue">Позиція 1</div>
+    <div class="position black">Позиція 2</div>
+    <div class="position black">Позиція 3</div>
+  </div>
+
+  <!-- Другий рядок -->
+  <div class="row row-label">
+    <div class="label" data-i18n="karmaLabel">Карма</div>
+  </div>
+
+  <!-- Третій рядок -->
+  <div class="row row-second">
+    <div class="position red">Позиція 22</div>
+    <div class="position red">Позиція 16</div>
+    <div class="position red">Позиція 19</div>
+    <div class="position red">Позиція 20</div>
+    <div class="position red">Позиція 21</div>
+    <div class="position red">Позиція 26</div>
+  </div>
+
+  <!-- Четвертий рядок -->
+  <div class="row row-label">
+    <div class="label" data-i18n="fateLabel">Доля</div>
+  </div>
+
+  <!-- П'ятий рядок -->
+  <div class="row row-third">
+    <div class="position green">Позиція 25</div>
+    <div class="position green">Позиція 5</div>
+    <div class="position green">Позиція 4</div>
+    <div class="position green">Позиція 23</div>
+    <div class="position green">Позиція 24</div>
+    <div class="position green">Позиція 27</div>
+  </div>
+</div>
+
+
+        </div>
+
+
+  <script src="script.js"></script>
+   
+</body>
+</html>    
