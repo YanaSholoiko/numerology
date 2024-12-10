@@ -598,3 +598,39 @@ button:hover {
 	border: 1px solid green;
 }
 
+/* Адаптивність для екранів шириною до 768px (типові планшети) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Зменшений текст */
+    }
+
+    .container {
+        padding: 10px; /* Зменшені відступи */
+    }
+
+    .circle {
+        width: 50px;
+        height: 50px; /* Зменшені кола */
+    }
+}
+
+/* Адаптивність для екранів шириною до 480px (мобільні телефони) */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px; /* Ще менший текст */
+    }
+
+    .container {
+        padding: 5px; /* Мінімальні відступи */
+    }
+
+    .circle {
+        width: 40px;
+        height: 40px; /* Ще менші кола */
+    }
+
+    .row {
+        flex-direction: column; /* Елементи в стовпчик */
+        align-items: center;
+    }
+}
