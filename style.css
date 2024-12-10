@@ -612,6 +612,48 @@ button:hover {
         width: 50px;
         height: 50px; /* Зменшені кола */
     }
+	
+
+	#tab3 .labyrinth-layout {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .labyrinth-row {
+        gap: 10px; /* Зменшення проміжків */
+        margin-bottom: 15px; /* Зменшення відступів */
+    }
+
+    .labyrinth-row .circle {
+        width: 50px; /* Менший розмір кола */
+        height: 50px;
+    }
+
+    .labyrinth-position7 {
+        transform: translateX(70) translateY(0); /* Прибрано зрушення */
+    }
+
+    .labyrinth-position8 {
+        transform: translateY(10); /* Прибрано зрушення */
+    }
+
+    .labyrinth-position13 {
+        transform: translateX(0) translateY(10px); /* Зменшено зрушення */
+    }
+
+    .labyrinth-position14 {
+        transform: translateX(80px) translateY(10px); /* Зменшено зрушення */
+    }
+	.circle .position-label {
+	margin-top: -9px; /* Відступ для розміщення під результатом */
+    }
+	.position-circle {
+        width: 50px; /* Зменшено розмір кіл */
+        height: 50px;
+        font-size: 16px; /* Зменшено розмір тексту в колах */
+        margin: 3px;
+    }
 }
 
 /* Адаптивність для екранів шириною до 480px (мобільні телефони) */
@@ -629,8 +671,23 @@ button:hover {
         height: 40px; /* Ще менші кола */
     }
 
-    .row {
-        flex-direction: column; /* Елементи в стовпчик */
-        align-items: center;
+	.labyrinth-row {
+        gap: 5px; /* Ще менші проміжки */
+        margin-bottom: 10px; /* Ще менші відступи */
+    }
+
+    .position-value {
+        font-size: 12px; /* Ще менший розмір тексту */
+    }
+
+    .labyrinth-row .circle {
+        width: 40px; /* Ще менший розмір кола */
+        height: 40px;
+    }
+	.position-circle {
+        width: 40px; /* Ще менший розмір кіл */
+        height: 40px;
+        font-size: 12px; /* Ще менший розмір тексту в колах */
+        margin: 2px;
     }
 }
