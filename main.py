@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Ваш токен бота
-TELEGRAM_BOT_TOKEN = "7316796711:AAHGb95ZLhawPkwWCX1a4RBHm_fZiNRwn3U"
+TELEGRAM_BOT_TOKEN = "7807000284:AAH2sKc20wE4CWD6nDDs4pai8sozysL8TII"
 
 # URL вашого веб-додатка
 APP_URL = "https://numerology-3fc7.onrender.com"  # замініть на ваш URL
