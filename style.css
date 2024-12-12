@@ -600,10 +600,15 @@ button:hover {
 
 /* Адаптивність для екранів шириною до 768px (типові планшети) */
 @media (max-width: 768px) {
-    body {
+     body {
         font-size: 14px; /* Зменшений текст */
     }
 
+     .tabs button {
+        font-size: 14px; /* Зменшений розмір тексту кнопок */
+        padding: 7px 10px; /* Зменшені відступи */
+        width: 90%; /* Зробити кнопки шириною майже на весь екран */
+    }
     .container {
         padding: 10px; /* Зменшені відступи */
     }
@@ -612,7 +617,12 @@ button:hover {
         width: 50px;
         height: 50px; /* Зменшені кола */
     }
-	
+	.position-label {
+	    margin-top: -9px; /* Відступ для розміщення під результатом */
+    }
+	.karmic-layout {
+    gap: 10px;
+}
 
 	#tab3 .labyrinth-layout {
         flex-direction: column;
@@ -646,22 +656,57 @@ button:hover {
         transform: translateX(80px) translateY(10px); /* Зменшено зрушення */
     }
 	.circle .position-label {
-	margin-top: -9px; /* Відступ для розміщення під результатом */
+	    margin-top: -9px; /* Відступ для розміщення під результатом */
+    }
+	
+	.position-value {
+       font-size: 16px;
     }
 	.position-circle {
         width: 50px; /* Зменшено розмір кіл */
         height: 50px;
-        font-size: 16px; /* Зменшено розмір тексту в колах */
         margin: 3px;
     }
+	
+	.circle .position-value{
+		font-size: 16px;
+	}
+	
+	
+	.pain-strength-section .circle {
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+    }
+	.pain-strength-section .circle-label {
+        margin-top: -9px;
+    }
+	.position {
+        width: 50px;
+        height: 50px;
+	    font-size: 16px;
+    }
 }
+
 
 /* Адаптивність для екранів шириною до 480px (мобільні телефони) */
 @media (max-width: 480px) {
     body {
-        font-size: 12px; /* Ще менший текст */
+        font-size: 14px; /* Ще менший текст */
+    }
+    
+	 .tabs {
+        display: flex;
+        flex-direction: column; /* Розташування кнопок у стовпчик */
+        align-items: center; /* Вирівнювання по центру */
     }
 
+    .tabs button {
+        font-size: 14px; /* Зменшений розмір тексту кнопок */
+        padding: 7px 10px; /* Зменшені відступи */
+        width: 90%; /* Зробити кнопки шириною майже на весь екран */
+    }
+	
     .container {
         padding: 5px; /* Мінімальні відступи */
     }
@@ -673,21 +718,74 @@ button:hover {
 
 	.labyrinth-row {
         gap: 5px; /* Ще менші проміжки */
-        margin-bottom: 10px; /* Ще менші відступи */
+        margin-bottom: 5px; /* Ще менші відступи */
     }
 
     .position-value {
-        font-size: 12px; /* Ще менший розмір тексту */
+        font-size: 14px; /* Ще менший розмір тексту */
     }
 
     .labyrinth-row .circle {
         width: 40px; /* Ще менший розмір кола */
         height: 40px;
     }
+	
+	.layout{
+		gap:5px;
+	}
+	
+	.right-section{
+		gap: 7px;
+	}
+	
+	.left-section{
+		gap: 7px;
+	}
+	
 	.position-circle {
-        width: 40px; /* Ще менший розмір кіл */
-        height: 40px;
-        font-size: 12px; /* Ще менший розмір тексту в колах */
+        width: 50px; /* Ще менший розмір кіл */
+        height: 50px;
+        font-size: 14px; /* Ще менший розмір тексту в колах */
         margin: 2px;
+    }
+	.karmic-title {
+        font-size: 16px; /* Ще менший розмір тексту заголовка */
+    }
+
+    .karmic-layout {
+        flex-direction: column;
+        transform: translateY(-20px); /* Ще більше зменшено зрушення */
+    }
+
+    .result-circle {
+        font-size: 12px; /* Ще менший розмір тексту */
+    }
+
+    .circle .position-label {
+	    margin-top: -12px; /* Відступ для розміщення під результатом */
+    }
+
+    .triangle-row {
+        gap: 5px; /* Ще менші проміжки між елементами */
+        margin-bottom: 3px; /* Ще менший відступ між рядками */
+    }
+
+    .equal-sign, .plus-sign {
+        font-size: 18px; /* Ще менший розмір тексту */
+    }
+
+    .result-label {
+        font-size: 8px; /* Ще менший розмір підпису */
+        top: 30px; /* Скориговано позицію */
+    }
+	.position {
+        width: 40px;
+        height: 40px;
+    }
+	
+	.pain-strength-section .circle {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
     }
 }
