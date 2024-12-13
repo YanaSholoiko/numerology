@@ -1,4 +1,5 @@
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -29,13 +30,7 @@ def send_message(chat_id, text):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     requests.post(url, json={"chat_id": chat_id, "text": text})
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-
-
-
-import os
-
+# Додано: Відображення структури файлів
 @app.route('/debug-files')
 def debug_files():
     files = []
@@ -43,3 +38,6 @@ def debug_files():
         for filename in filenames:
             files.append(os.path.join(root, filename))
     return '<br>'.join(files)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
