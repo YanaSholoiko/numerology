@@ -1,34 +1,25 @@
-from flask import Flask, request, send_from_directory
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
-app = Flask(__name__)
+# Ваш токен доступу від BotFather
+TOKEN = "7807000284:AAH2sKc20wE4CWD6nDDs4pai8sozysL8TII"
 
-# Головна сторінка
-@app.route('/')
-def index():
-    return send_from_directory('static', 'index.html')
+# Команда /start
+def start(update: Update, context: CallbackContext) -> None:
+    update.message.reply_text(
+        "Привіт! Це ваш нумерологічний бот. Відвідайте калькулятор: https://numerology-3fc7.onrender.com"
+    )
 
-# Статичні файли (CSS, JS)
-@app.route('/<path:path>')
-def static_files(path):
-    return send_from_directory('static', path)
+def main():
+    updater = Updater(TOKEN)
 
-# Telegram webhook
-@app.route('/webhook', methods=['POST'])
-def webhook():
-    data = request.json
-    if "message" in data:
-        chat_id = data["message"]["chat"]["id"]
-        text = "Привіт! Ваш бот працює 🎉"
-        send_message(chat_id, text)
-    return {"ok": True}
+    # Додати обробники команд
+    updater.dispatcher.add_handler(CommandHandler("start", start))
 
-# Відправка повідомлень в Telegram
-def send_message(chat_id, text):
-    import requests
-    TOKEN = "7807000284:AAH2sKc20wE4CWD6nDDs4pai8sozysL8TII"
-    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-    requests.post(url, json={"chat_id": chat_id, "text": text})
+    # Запустити бота
+    updater.start_polling()
+    updater.idle()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    main()
 
